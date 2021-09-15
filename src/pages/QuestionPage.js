@@ -16,11 +16,11 @@ import { DispatchContext } from "../context/quiz.context";
 
 const useStyles = makeStyles((theme) => ({
   questionLabel: {
-    margin: "1rem 0rem",
+    margin: "0.5rem 0rem",
     color: theme.palette.primary.main,
     fontSize: "1.5rem",
     textAlign: "center",
-    lineHeight: "1.5rem",
+    lineHeight: "2rem",
   },
 }));
 
@@ -61,40 +61,38 @@ const QuestionPage = ({ getSingleQuiz }) => {
   };
 
   return (
-    <>
+    <Container maxWidth="sm" align="center">
       {showQuestion && (
-        <Container maxWidth="md" align="center">
-          <form onSubmit={handleSubmit}>
-            <FormControl component="fieldset" error={error}>
-              <FormLabel component="legend" className={classes.questionLabel}>
-                {getSingleQuiz.question}
-              </FormLabel>
-              <RadioGroup
-                aria-label="quiz"
-                name="quiz"
-                value={value}
-                onChange={handleRadioChange}
-                style={{ alignItems: "center", marginBottom: "0.5rem" }}
-              >
-                {getSingleQuiz.answerChoices.map((answer) => (
-                  <FormControlLabel
-                    value={answer}
-                    control={<Radio />}
-                    label={
-                      <Typography variant="body1" color="primary">
-                        {answer}
-                      </Typography>
-                    }
-                  />
-                ))}
-              </RadioGroup>
-            </FormControl>
-            <QuizButton onClick={handleSubmit}>Submit</QuizButton>
-            <FormHelperText>{helperText}</FormHelperText>
-          </form>
-        </Container>
+        <form onSubmit={handleSubmit}>
+          <FormControl component="fieldset" error={error}>
+            <FormLabel component="legend" className={classes.questionLabel}>
+              {getSingleQuiz.question}
+            </FormLabel>
+            <RadioGroup
+              aria-label="quiz"
+              name="quiz"
+              value={value}
+              onChange={handleRadioChange}
+              style={{ alignItems: "center", marginBottom: "0.5rem" }}
+            >
+              {getSingleQuiz.answerChoices.map((answer) => (
+                <FormControlLabel
+                  value={answer}
+                  control={<Radio />}
+                  label={
+                    <Typography variant="body1" color="primary">
+                      {answer}
+                    </Typography>
+                  }
+                />
+              ))}
+            </RadioGroup>
+          </FormControl>
+          <QuizButton onClick={handleSubmit}>Submit</QuizButton>
+          <FormHelperText>{helperText}</FormHelperText>
+        </form>
       )}
-    </>
+    </Container>
   );
 };
 

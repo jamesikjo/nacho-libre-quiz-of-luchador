@@ -14,11 +14,12 @@ const MainHeader = () => {
       style={{ marginTop: "1rem", cursor: "pointer" }}
       onClick={() => dispatch({ type: "RESET" })}
       align="center"
+      component="header"
     >
       <img
         src={nachoHeader}
         alt="nacho-header"
-        style={{ height: matchSm && 320 }}
+        style={{ height: matchSm ? 260 : 320 }}
       />
     </Grid>
   );

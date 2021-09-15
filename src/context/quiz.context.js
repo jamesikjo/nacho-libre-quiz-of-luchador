@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import reducer from "../reducer/quiz.reducer.";
+import reducer from "../reducer/quiz.reducer";
 
 const initialState = {
   showQuestion: false,

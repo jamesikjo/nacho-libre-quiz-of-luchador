@@ -1,10 +1,18 @@
 import React, { useContext } from "react";
-import { Typography, Grid } from "@material-ui/core";
+import {
+  Typography,
+  Grid,
+  Container,
+  useTheme,
+  useMediaQuery,
+} from "@material-ui/core";
 import { QuizContext } from "../context/quiz.context";
 import { DispatchContext } from "../context/quiz.context";
 import QuizButton from "./../components/QuizButton";
 
 const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
+  const theme = useTheme();
+  const matchSm = useMediaQuery(theme.breakpoints.down("sm"));
   const { questionNumber, showAnswer, userAnswer } = useContext(QuizContext);
   const dispatch = useContext(DispatchContext);
 
@@ -17,14 +25,14 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
   };
 
   return (
-    <>
+    <Container maxWidth="sm">
       {showAnswer && (
         <Grid container direction="column" alignItems="center">
           <Grid item>
             <Typography
-              variant="h3"
+              variant={matchSm ? "h4" : "h3"}
               color="primary"
-              style={{ marginBottom: "1rem" }}
+              style={{ marginBottom: "0.5rem" }}
             >
               {getSingleQuiz.correctAnswer === userAnswer
                 ? "CORRECT!"
@@ -32,8 +40,8 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
             </Typography>
           </Grid>
 
-          <Grid item md={6} align="center">
-            <Typography variant="h4" color="primary">
+          <Grid item align="center">
+            <Typography variant={matchSm ? "h5" : "h4"} color="primary">
               {`"${getSingleQuiz.correctAnswer.toUpperCase()}"`}
             </Typography>
           </Grid>
@@ -42,17 +50,17 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
             <Typography
               variant="h6"
               color="primary"
-              style={{ marginBottom: "1rem" }}
+              style={{ marginBottom: "0.5rem" }}
             >
               WAS THE CORRECT ANSWER
             </Typography>
           </Grid>
 
-          <Grid item md={4} align="center">
+          <Grid item align="center">
             <Typography
               variant="body1"
               color="primary"
-              style={{ marginBottom: "1.5rem" }}
+              style={{ marginBottom: "1rem" }}
             >
               {getSingleQuiz.answerDetails}
             </Typography>
@@ -75,7 +83,7 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
           </Grid>
         </Grid>
       )}
-    </>
+    </Container>
   );
 };
 

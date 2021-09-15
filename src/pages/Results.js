@@ -85,7 +85,7 @@ const Results = () => {
               align="center"
               gutterBottom
             >
-              CURRENT RANK: "<u>{rankings().rank}</u>"
+              YOUR RANK: "<u>{rankings().rank}</u>"
             </Typography>
           </Grid>
 
