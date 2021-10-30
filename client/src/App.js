@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/quiz");
+        const res = await axios.get("/api/quiz");
         //get returns a res object {data: ... , status: ... , headers: ..., etc...}
         console.log("useEffect running");
         setQuestions(res.data);
