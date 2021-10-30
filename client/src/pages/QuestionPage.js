@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const QuestionPage = ({ getSingleQuiz }) => {
+const QuestionPage = ({ getSingleQuestion }) => {
   const classes = useStyles();
   const { score, showQuestion } = useContext(QuizContext);
   const dispatch = useContext(DispatchContext);
@@ -48,7 +48,8 @@ const QuestionPage = ({ getSingleQuiz }) => {
       dispatch({
         type: "SUBMIT_ANSWER",
         userAnswerPayload: value,
-        scorePayload: getSingleQuiz.correctAnswer === value ? score + 1 : score,
+        scorePayload:
+          getSingleQuestion.correctAnswer === value ? score + 1 : score,
       });
       setValue(""); //reset value for next question
     }
@@ -60,7 +61,7 @@ const QuestionPage = ({ getSingleQuiz }) => {
         <form onSubmit={handleSubmit}>
           <FormControl component="fieldset" error={error}>
             <FormLabel component="legend" className={classes.questionLabel}>
-              {getSingleQuiz.question}
+              {getSingleQuestion.question}
             </FormLabel>
             <RadioGroup
               aria-label="question-choices"
@@ -69,7 +70,7 @@ const QuestionPage = ({ getSingleQuiz }) => {
               onChange={handleRadioChange}
               style={{ alignItems: "center", marginBottom: "0.5rem" }}
             >
-              {getSingleQuiz.answers.map(({ answer }, idx) => (
+              {getSingleQuestion.answers.map(({ answer }, idx) => (
                 <FormControlLabel
                   key={idx}
                   value={answer}

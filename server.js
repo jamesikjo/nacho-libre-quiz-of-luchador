@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const connectDB = require("./config/db");
 const cors = require("cors");
+// Accessing the path module
+const path = require("path");
 
 //creating app
 const app = express();
@@ -25,15 +27,14 @@ app.use("/api/quiz", routes);
 // setting up port
 const PORT = process.env.PORT || 8000;
 
-// Accessing the path module
-const path = require("path");
-
-// Step 1:
+//give heroku server ACCESS to our react application (build folder)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
-  // Step 2:
-  app.get("*", function (request, response) {
-    response.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  app.use(express.static(path.join(__dirname, "client", "build")));
+
+  //if get route on our app is reached, serve index.html to client
+  // * means any route, path.join returns /client/build/index.html
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
 

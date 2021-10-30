@@ -15,31 +15,33 @@ const Results = ({ getTotalQuestions }) => {
     dispatch({ type: "RESTART" });
   };
 
-  const rankings = () => {
+  const getUserRanking = () => {
     let ranking;
+    const getScorePercent = (score / getTotalQuestions) * 100;
+    console.log(getScorePercent);
     switch (true) {
-      case score <= 3: //convert to percentages
+      case getScorePercent < 30: //convert to percentages
         ranking = {
           rank: "YOUNG IGNACIO",
           rankDesc: "ARE YOU SURE YOU SAW THE MOVIE?",
           rankImg: machete,
         };
         break;
-      case score >= 4 && score <= 6:
+      case getScorePercent >= 30 && getScorePercent < 60:
         ranking = {
           rank: "MONASTERY WORKER",
           rankDesc: "NOT A LUCHADOR YET!",
           rankImg: monastery,
         };
         break;
-      case score >= 6 && score <= 8:
+      case getScorePercent >= 60 && getScorePercent < 80:
         ranking = {
           rank: "LUCHADOR TRAINEE",
           rankDesc: "NOT BAD, ALMOST THERE",
           rankImg: luchadorTrainee,
         };
         break;
-      case score >= 9 && score <= 10:
+      case getScorePercent >= 80 && getScorePercent <= 10:
         ranking = {
           rank: "LUCHADOR NACHO",
           rankDesc: "Excellent! OFFICIALLY A LUCHADOR!",
@@ -85,14 +87,14 @@ const Results = ({ getTotalQuestions }) => {
               align="center"
               gutterBottom
             >
-              YOUR RANK: "<u>{rankings().rank}</u>"
+              YOUR RANK: "<u>{getUserRanking().rank}</u>"
             </Typography>
           </Grid>
 
           <Grid item align="center">
             <img
-              src={rankings().rankImg}
-              alt={rankings().rank}
+              src={getUserRanking().rankImg}
+              alt={getUserRanking().rank}
               style={{ height: 170, borderRadius: 10 }}
             />
           </Grid>
@@ -103,7 +105,7 @@ const Results = ({ getTotalQuestions }) => {
               color="primary"
               style={{ marginBottom: "1rem" }}
             >
-              {rankings().rankDesc}
+              {getUserRanking().rankDesc}
             </Typography>
           </Grid>
           <Grid item>

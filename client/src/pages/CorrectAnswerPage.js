@@ -10,7 +10,7 @@ import { QuizContext } from "../context/quiz.context";
 import { DispatchContext } from "../context/quiz.context";
 import QuizButton from "../components/QuizButton";
 
-const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
+const CorrectAnswerPage = ({ getSingleQuestion, getTotalQuestions }) => {
   const theme = useTheme();
   const matchSm = useMediaQuery(theme.breakpoints.down("sm"));
   const { questionCount, showAnswer, userAnswer } = useContext(QuizContext);
@@ -34,7 +34,7 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
               color="primary"
               style={{ marginBottom: "0.5rem" }}
             >
-              {getSingleQuiz.correctAnswer === userAnswer
+              {getSingleQuestion.correctAnswer === userAnswer
                 ? "CORRECT!"
                 : "WRONG"}
             </Typography>
@@ -42,7 +42,7 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
 
           <Grid item align="center">
             <Typography variant={matchSm ? "h5" : "h4"} color="primary">
-              {`"${getSingleQuiz.correctAnswer.toUpperCase()}"`}
+              {`"${getSingleQuestion.correctAnswer.toUpperCase()}"`}
             </Typography>
           </Grid>
 
@@ -62,7 +62,7 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
               color="primary"
               style={{ marginBottom: "1rem" }}
             >
-              {getSingleQuiz.answerDesc}
+              {getSingleQuestion.answerDesc}
             </Typography>
           </Grid>
 
@@ -76,7 +76,7 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
 
           <Grid item>
             <img
-              src={getSingleQuiz.correctImg}
+              src={getSingleQuestion.correctImg}
               alt="correct-answer-img"
               style={{ height: 170, borderRadius: 10 }}
             />
