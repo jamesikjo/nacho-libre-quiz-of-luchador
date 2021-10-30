@@ -15,7 +15,6 @@ connectDB();
 
 // initialize middleware
 app.use(express.json({ extended: false })); //get body and headers in root req obj
-app.get("/", (req, res) => res.send("server is active"));
 
 // cors
 app.use(cors({ origin: true, credentials: true }));
