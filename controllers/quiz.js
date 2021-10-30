@@ -1,4 +1,4 @@
-const Quiz = require("../models/Quiz");
+const Quiz = require("../models/quiz");
 
 //find() will return all quiz items in collection. If collection empty, return 404
 exports.getAllQuiz = async (req, res) => {
