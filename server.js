@@ -22,8 +22,8 @@ app.use(cors({ origin: true, credentials: true }));
 // use routes in /routes/quiz.js
 app.use("/api/quiz", routes);
 
-// setting up port
-const PORT = process.env.PORT;
+// // setting up port
+// const PORT = process.env.PORT;
 
 // Accessing the path module
 const path = require("path");
@@ -37,6 +37,4 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`server is running on http://localhost:${PORT}`);
-});
+app.listen(process.env.PORT);
