@@ -7,7 +7,7 @@ const {
   // putUpdateQuiz,
   // deleteQuiz,
   // getSingleQuiz,
-} = require("../controllers/quizControllers");
+} = require("../controllers/quiz");
 
 /**
  * @route GET api/quiz
