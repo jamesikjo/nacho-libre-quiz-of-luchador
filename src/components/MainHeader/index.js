@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Grid, useMediaQuery, useTheme } from "@material-ui/core";
-import nachoHeader from "../assets/nacho_header.png";
-import { DispatchContext } from "../context/quiz.context";
+import nachoHeader from "../../assets/nacho_header.png";
+import { DispatchContext } from "../../context/quiz.context";
 
 const MainHeader = () => {
   const theme = useTheme();
@@ -18,7 +18,7 @@ const MainHeader = () => {
     >
       <img
         src={nachoHeader}
-        alt="nacho-header"
+        alt="nacho header"
         style={{ height: matchSm ? 260 : 320 }}
       />
     </Grid>

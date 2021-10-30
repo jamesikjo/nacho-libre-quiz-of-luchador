@@ -6,20 +6,20 @@ import {
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import mask from "../assets/mask.png";
-import { QuizContext } from "../context/quiz.context";
+import mask from "../../assets/mask.png";
+import { QuizContext } from "../../context/quiz.context";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   counterContainer: {
     margin: "1rem 0rem 0.5rem 0rem",
   },
-}));
+});
 
-const Counter = () => {
+const Counter = ({ getTotalQuestions }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const { questionNumber, score } = useContext(QuizContext);
+  const { questionCount, score } = useContext(QuizContext);
 
   return (
     <Grid
@@ -36,12 +36,13 @@ const Counter = () => {
         >
           Question:{" "}
           <span
+            data-testid="question-number"
             style={{
               fontFamily: "Chilanka",
               fontSize: matchSm ? "1.5rem" : "1.8rem",
             }}
           >
-            {questionNumber}/10
+            {questionCount}/{getTotalQuestions}
           </span>
         </Typography>
       </Grid>
@@ -64,7 +65,7 @@ const Counter = () => {
               fontSize: matchSm ? "1.5rem" : "1.8rem",
             }}
           >
-            {score}/10
+            {score}/{getTotalQuestions}
           </span>
         </Typography>
       </Grid>

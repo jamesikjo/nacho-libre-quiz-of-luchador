@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import { Grid, Typography } from "@material-ui/core";
-import QuizButton from "./../components/QuizButton";
+import QuizButton from "../components/QuizButton";
 import { QuizContext } from "../context/quiz.context";
 import { DispatchContext } from "../context/quiz.context";
 
 const Start = () => {
-  const { questionNumber } = useContext(QuizContext);
+  const { questionCount } = useContext(QuizContext);
   const dispatch = useContext(DispatchContext);
 
   return (
     <>
-      {questionNumber === 0 && (
+      {questionCount === 0 && (
         <Grid container direction="column" alignItems="center">
           <Grid item align="center">
             <Typography

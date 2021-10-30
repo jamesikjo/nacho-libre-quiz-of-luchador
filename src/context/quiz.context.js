@@ -8,7 +8,7 @@ const initialState = {
   userAnswer: null,
   score: 0,
   questionIdx: 0,
-  questionNumber: 0,
+  questionCount: 0,
 };
 
 export const QuizContext = createContext();

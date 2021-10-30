@@ -7,18 +7,18 @@ import luchador from "../assets/luchador.jpg";
 import { QuizContext } from "../context/quiz.context";
 import { DispatchContext } from "../context/quiz.context";
 
-const Results = () => {
+const Results = ({ getTotalQuestions }) => {
   const { score, showResults } = useContext(QuizContext);
   const dispatch = useContext(DispatchContext);
 
   const restartQuiz = () => {
-    dispatch({ type: "RESET" });
+    dispatch({ type: "RESTART" });
   };
 
   const rankings = () => {
     let ranking;
     switch (true) {
-      case score <= 3:
+      case score <= 3: //convert to percentages
         ranking = {
           rank: "YOUNG IGNACIO",
           rankDesc: "ARE YOU SURE YOU SAW THE MOVIE?",
@@ -73,7 +73,7 @@ const Results = () => {
               </span>{" "}
               OUT OF{" "}
               <span style={{ fontFamily: "Chilanka", fontSize: "2rem" }}>
-                10
+                {getTotalQuestions}
               </span>
             </Typography>
           </Grid>

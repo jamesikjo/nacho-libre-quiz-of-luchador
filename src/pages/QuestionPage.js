@@ -10,7 +10,7 @@ import {
   Radio,
   Typography,
 } from "@material-ui/core";
-import QuizButton from "./../components/QuizButton";
+import QuizButton from "../components/QuizButton";
 import { QuizContext } from "../context/quiz.context";
 import { DispatchContext } from "../context/quiz.context";
 
@@ -39,24 +39,18 @@ const QuestionPage = ({ getSingleQuiz }) => {
     setError(false);
   };
 
-  const handleSubmitAnswer = (userAnswer) => {
-    dispatch({
-      type: "SUBMIT_ANSWER",
-      userAnswerPayload: userAnswer,
-      scorePayload:
-        getSingleQuiz.correctAnswer === userAnswer ? score + 1 : score,
-    });
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
     if (value === "") {
       setHelperText("Please select an option.");
-      setError(true);
+      setError(true); //pop up error message
     } else {
-      handleSubmitAnswer(value);
-      setValue("");
+      dispatch({
+        type: "SUBMIT_ANSWER",
+        userAnswerPayload: value,
+        scorePayload: getSingleQuiz.correctAnswer === value ? score + 1 : score,
+      });
+      setValue(""); //reset value for next question
     }
   };
 
@@ -69,14 +63,15 @@ const QuestionPage = ({ getSingleQuiz }) => {
               {getSingleQuiz.question}
             </FormLabel>
             <RadioGroup
-              aria-label="quiz"
-              name="quiz"
+              aria-label="question-choices"
+              name="choices"
               value={value}
               onChange={handleRadioChange}
               style={{ alignItems: "center", marginBottom: "0.5rem" }}
             >
-              {getSingleQuiz.answerChoices.map((answer) => (
+              {getSingleQuiz.answers.map(({ answer }, idx) => (
                 <FormControlLabel
+                  key={idx}
                   value={answer}
                   control={<Radio />}
                   label={

@@ -8,16 +8,16 @@ import {
 } from "@material-ui/core";
 import { QuizContext } from "../context/quiz.context";
 import { DispatchContext } from "../context/quiz.context";
-import QuizButton from "./../components/QuizButton";
+import QuizButton from "../components/QuizButton";
 
 const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
   const theme = useTheme();
   const matchSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const { questionNumber, showAnswer, userAnswer } = useContext(QuizContext);
+  const { questionCount, showAnswer, userAnswer } = useContext(QuizContext);
   const dispatch = useContext(DispatchContext);
 
   const handleNextPage = () => {
-    if (questionNumber === getTotalQuestions) {
+    if (questionCount === getTotalQuestions) {
       dispatch({ type: "SHOW_RESULTS" });
     } else {
       dispatch({ type: "NEXT_QUESTION" });
@@ -62,13 +62,13 @@ const CorrectAnswerPage = ({ getSingleQuiz, getTotalQuestions }) => {
               color="primary"
               style={{ marginBottom: "1rem" }}
             >
-              {getSingleQuiz.answerDetails}
+              {getSingleQuiz.answerDesc}
             </Typography>
           </Grid>
 
           <Grid item style={{ marginBottom: "1rem" }}>
             <QuizButton onClick={handleNextPage}>
-              {questionNumber !== getTotalQuestions
+              {questionCount !== getTotalQuestions
                 ? "Next Question"
                 : "Results"}
             </QuizButton>
