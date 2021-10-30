@@ -23,7 +23,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use("/api/quiz", routes);
 
 // setting up port
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
 // Accessing the path module
 const path = require("path");
