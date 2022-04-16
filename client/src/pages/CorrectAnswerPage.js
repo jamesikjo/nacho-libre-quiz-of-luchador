@@ -23,15 +23,19 @@ const CorrectAnswerPage = ({ getSingleQuestion, getTotalQuestions }) => {
       dispatch({ type: "NEXT_QUESTION" });
     }
   };
-
+  console.log(userAnswer);
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" style={{ marginTop: "1rem" }}>
       {showAnswer && (
         <Grid container direction="column" alignItems="center">
           <Grid item>
             <Typography
               variant={matchSm ? "h4" : "h3"}
-              color="primary"
+              color={
+                getSingleQuestion.correctAnswer === userAnswer
+                  ? "primary"
+                  : "secondary"
+              }
               style={{ marginBottom: "0.5rem" }}
             >
               {getSingleQuestion.correctAnswer === userAnswer
@@ -50,7 +54,7 @@ const CorrectAnswerPage = ({ getSingleQuestion, getTotalQuestions }) => {
             <Typography
               variant="h6"
               color="primary"
-              style={{ marginBottom: "0.5rem" }}
+              style={{ margin: "1rem 0rem" }}
             >
               WAS THE CORRECT ANSWER
             </Typography>
@@ -76,9 +80,9 @@ const CorrectAnswerPage = ({ getSingleQuestion, getTotalQuestions }) => {
 
           <Grid item>
             <img
-              src={getSingleQuestion.correctImg}
+              src={getSingleQuestion.answerImage}
               alt="correct-answer-img"
-              style={{ height: 170, borderRadius: 10 }}
+              style={{ maxHeight: 200, borderRadius: 10 }}
             />
           </Grid>
         </Grid>

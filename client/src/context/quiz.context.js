@@ -17,6 +17,8 @@ export const DispatchContext = createContext();
 export const QuizProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
+    //you can pass in both state, dispatch to one provider by [state, dispatch]
+    //they can be accessed in the child components
     <QuizContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
         {children}

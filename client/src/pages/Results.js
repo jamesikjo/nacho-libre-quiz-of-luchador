@@ -1,9 +1,5 @@
 import React, { useContext } from "react";
 import { Typography, Grid, Button } from "@material-ui/core";
-import machete from "../assets/machete.jpg";
-import luchadorTrainee from "../assets/young-luchador.jpg";
-import monastery from "../assets/monastery.jpg";
-import luchador from "../assets/luchador.jpg";
 import { QuizContext } from "../context/quiz.context";
 import { DispatchContext } from "../context/quiz.context";
 
@@ -18,34 +14,37 @@ const Results = ({ getTotalQuestions }) => {
   const getUserRanking = () => {
     let ranking;
     const getScorePercent = (score / getTotalQuestions) * 100;
-    console.log(getScorePercent);
     switch (true) {
       case getScorePercent < 30: //convert to percentages
         ranking = {
           rank: "YOUNG IGNACIO",
           rankDesc: "ARE YOU SURE YOU SAW THE MOVIE?",
-          rankImg: machete,
+          rankImg:
+            "https://res.cloudinary.com/jjo/image/upload/v1650079310/Quiz-of-Luchador/machete_xecf92.jpg",
         };
         break;
       case getScorePercent >= 30 && getScorePercent < 60:
         ranking = {
           rank: "MONASTERY WORKER",
           rankDesc: "NOT A LUCHADOR YET!",
-          rankImg: monastery,
+          rankImg:
+            "https://res.cloudinary.com/jjo/image/upload/v1650080151/Quiz-of-Luchador/monastery_adzvwr.jpg",
         };
         break;
       case getScorePercent >= 60 && getScorePercent < 80:
         ranking = {
           rank: "LUCHADOR TRAINEE",
           rankDesc: "NOT BAD, ALMOST THERE",
-          rankImg: luchadorTrainee,
+          rankImg:
+            "https://res.cloudinary.com/jjo/image/upload/v1650080246/Quiz-of-Luchador/young-luchador_vrye0j.jpg",
         };
         break;
-      case getScorePercent >= 80 && getScorePercent <= 10:
+      case getScorePercent >= 80 && getScorePercent <= 100:
         ranking = {
           rank: "LUCHADOR NACHO",
           rankDesc: "Excellent! OFFICIALLY A LUCHADOR!",
-          rankImg: luchador,
+          rankImg:
+            "https://res.cloudinary.com/jjo/image/upload/v1650080158/Quiz-of-Luchador/luchador_px2ouq.jpg",
         };
         break;
       default:
@@ -62,9 +61,13 @@ const Results = ({ getTotalQuestions }) => {
             <Typography
               variant="h4"
               color="primary"
-              style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}
+              style={{
+                marginTop: "0.5rem",
+                marginBottom: "0.5rem",
+                textDecoration: "underline",
+              }}
             >
-              <u>RESULTS</u>
+              Results:
             </Typography>
           </Grid>
 
@@ -80,13 +83,8 @@ const Results = ({ getTotalQuestions }) => {
             </Typography>
           </Grid>
 
-          <Grid item>
-            <Typography
-              variant="h6"
-              color="primary"
-              align="center"
-              gutterBottom
-            >
+          <Grid item style={{ marginBottom: "1rem" }}>
+            <Typography variant="h6" color="primary" align="center">
               YOUR RANK: "<u>{getUserRanking().rank}</u>"
             </Typography>
           </Grid>

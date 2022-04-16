@@ -13,7 +13,7 @@ const App = () => {
   const { questionIdx } = useContext(QuizContext);
 
   //questionIdx initialVal starts from 0 to grab first question from questions array
-  //after question is answered by user, questionIdx + 1 to render the next question
+  //after question is answered by user, questionIdx + 1 to grab the next question
   const getSingleQuestion = questions[questionIdx];
   const getTotalQuestions = questions.length;
 
@@ -23,7 +23,7 @@ const App = () => {
         //proxy set to localhost:8000 in client/package.json to fetch data in development
         const res = await axios.get("/api/quiz");
         //get returns a res object {data: ... , status: ... , headers: ..., etc...}
-        setQuestions(res.data);
+        setQuestions(res.data); //add questions state to context?
       } catch (err) {
         alert(err.response.data.message);
         console.log(err.response.data.message);
