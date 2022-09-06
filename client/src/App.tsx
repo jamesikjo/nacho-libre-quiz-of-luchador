@@ -7,25 +7,25 @@ import { QuizContext } from "./stores/QuizState";
 import { QuestionData } from "./utils/types/QuestionData";
 import Results from "./components/Results";
 import "./App.css";
+import { getData } from "./utils/fetchData";
 
 const App = () => {
   const [questions, setQuestions] = useState<QuestionData[]>([]);
   const { quizState } = useContext(QuizContext);
 
   const { counterValue, showResults } = quizState;
-  const totalQuestions: number = questions.length;
+  const totalQuestions: number = questions && questions.length;
 
   useEffect(() => {
-    async function fetchData() {
-      //set proxy to localhost:8000 inside client/package.json for development
-      const res = await fetch("/questions/get");
-      if (!res.ok) {
-        throw new Error("Failed to fetch questions");
+    async function fetchQuestions() {
+      try {
+        const { data } = await getData("questions/get");
+        setQuestions(data); //res.json to read body of response
+      } catch (error) {
+        console.log(error);
       }
-      const { shuffledData } = await res.json();
-      setQuestions(shuffledData); //res.json to read body of response
     }
-    fetchData();
+    fetchQuestions();
   }, []);
 
   return (
