@@ -1,0 +1,16 @@
+.answer-container {
+  max-width: 600px;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+}
+.answer_image {
+  max-height: 200px;
+  border-radius: 10px;
+}
+.answer_button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}

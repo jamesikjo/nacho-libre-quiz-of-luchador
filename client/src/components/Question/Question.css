@@ -1,0 +1,19 @@
+.question-container {
+  max-width: 600px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+fieldset {
+  border: none;
+  margin: 0 auto;
+  text-align: center;
+}
+
+legend {
+  font-size: 1.5rem;
+}
+
+input[type="radio"] {
+  margin-right: 0.25rem;
+}

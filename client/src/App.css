@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "Vademecum";
+  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/vademecum.ttf") format("truetype");
+}
+
+.App {
+  font-family: "Vademecum";
+  font-weight: 400;
+  color: #333333;
+}
+
+h1 {
+  font-weight: 500;
+  margin-top: 0rem;
+}
+
+h2 {
+  font-weight: 500;
+  margin: 0.5rem 0rem;
+}
+
+h3 {
+  font-weight: 500;
+  margin: 0.75rem 0rem;
+}
+
+button {
+  margin-top: 10px;
+  background: #e6e6e6;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  padding: 5px 10px 5px 10px;
+  font: inherit;
+  cursor: pointer;
+}
