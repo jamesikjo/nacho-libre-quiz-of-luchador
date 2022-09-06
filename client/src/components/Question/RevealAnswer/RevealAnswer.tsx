@@ -9,6 +9,7 @@ import {
   showResults,
 } from "../../../stores/Actions";
 import "./RevealAnswer.css";
+import { getData } from "../../../utils/fetchData";
 
 type Props = {
   question: QuestionData;
@@ -26,25 +27,24 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
 
   const correctAnswerTitle = options[answerData.correct_answer]?.option_title;
   const validateAnswer = userAnswer.answer_value === answerData?.correct_answer;
-  console.log(validateAnswer);
+
   useEffect(() => {
-    //FETCH ANSWER DATA WITH QUESTION ID
-    async function fetchData() {
-      const res = await fetch(`/answer/get/${_id}`);
-      if (!res.ok) {
-        throw new Error("Failed to fetch answer");
+    //FETCH ANSWER DATA WITH QUESTION._ID
+    async function fetchAnswer() {
+      try {
+        const { data } = await getData("answer/get", _id);
+        setAnswerData(data[0]);
+      } catch (err) {
+        console.log(err);
       }
-      const { answerData } = await res.json();
-      setAnswerData(answerData[0]); //res.json to read body of response
     }
     if (validateAnswer) {
       dispatch(addScore());
     }
-    fetchData();
+    fetchAnswer();
   }, []);
 
   useEffect(() => {
-    console.log("useffect");
     if (validateAnswer) {
       dispatch(addScore());
     }
