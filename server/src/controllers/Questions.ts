@@ -5,8 +5,9 @@ const TOTAL_QUESTION_COUNT = 10;
 
 const readAllQuestions = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const shuffledData = await Questions.aggregate([{ $sample: { size: TOTAL_QUESTION_COUNT } }]);
-        res.status(200).json({ shuffledData });
+        const data = await Questions.aggregate([{ $sample: { size: TOTAL_QUESTION_COUNT } }]);
+        console.log(data);
+        res.status(200).json({ data });
     } catch (error) {
         res.status(500).json({ error });
     }
