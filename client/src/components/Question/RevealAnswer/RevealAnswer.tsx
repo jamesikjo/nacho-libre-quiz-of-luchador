@@ -22,7 +22,6 @@ type Props = {
 const RevealAnswer = ({ question, userAnswer }: Props) => {
   const [answerData, setAnswerData] = useState<AnswerData>({} as AnswerData);
   const { quizState, dispatch } = useContext(QuizContext);
-
   const { options, _id } = question;
 
   const correctAnswerTitle = options[answerData.correct_answer]?.option_title;
@@ -42,13 +41,7 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
       dispatch(addScore());
     }
     fetchAnswer();
-  }, []);
-
-  useEffect(() => {
-    if (validateAnswer) {
-      dispatch(addScore());
-    }
-  }, [answerData.correct_answer]);
+  }, [_id, validateAnswer, dispatch]);
 
   const handleClickButton = () => {
     if (quizState.counterValue === 10) {
@@ -58,18 +51,10 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
     dispatch(addCounter());
   };
 
-  const answerResult = () => {
-    return validateAnswer ? (
-      <h2>Correct!</h2>
-    ) : (
-      <h2 className="wrong">Wrong!</h2>
-    );
-  };
-
   return (
     <section>
       <div className="answer-container">
-        {answerResult()}
+        {validateAnswer ? <h2>Correct!</h2> : <h2 className="wrong">Wrong!</h2>}
         <h3>
           <span>"{correctAnswerTitle}</span>" was the correct answer!
         </h3>
