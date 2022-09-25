@@ -56,7 +56,7 @@ const Question = ({ question }: Props) => {
                       required
                     />
                     <label htmlFor={option_title}> {option_title}</label>
-                  </p>{" "}
+                  </p>
                 </React.Fragment>
               ))}
               <button type="submit" className="submit_button">

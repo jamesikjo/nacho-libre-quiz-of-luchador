@@ -1,0 +1,12 @@
+.results {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.results h2 {
+  font-size: 3rem;
+}
+
+.results h3 {
+  font-size: 2rem;
+}

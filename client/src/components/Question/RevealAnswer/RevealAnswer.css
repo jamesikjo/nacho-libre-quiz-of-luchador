@@ -4,13 +4,30 @@
   padding-right: 24px;
   text-align: center;
 }
+.answer-container h3 {
+  margin-bottom: 0.75rem;
+}
+.answer-container h3 span {
+  font-weight: 700;
+}
+
+.answer-container p {
+  font-size: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 1.5;
+  -webkit-text-stroke: 0px;
+}
+
 .answer_image {
-  max-height: 200px;
+  max-height: 180px;
   border-radius: 10px;
 }
 .answer_button {
   display: block;
   margin: 0 auto;
-  margin-top: 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.35rem;
+}
+
+.wrong {
+  color: #d43636;
 }

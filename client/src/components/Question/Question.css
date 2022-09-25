@@ -1,19 +1,31 @@
 .question-container {
   max-width: 600px;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 fieldset {
   border: none;
   margin: 0 auto;
+  padding: 0;
   text-align: center;
 }
-
+fieldset p {
+  margin: 0.75rem 0rem;
+}
 legend {
-  font-size: 1.5rem;
+  font-weight: 700;
+  font-size: 1.85rem;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-family: "Josefin Sans", sans-serif;
+  -webkit-text-stroke: 0px;
 }
 
 input[type="radio"] {
-  margin-right: 0.25rem;
+  margin-right: 0.15rem;
 }

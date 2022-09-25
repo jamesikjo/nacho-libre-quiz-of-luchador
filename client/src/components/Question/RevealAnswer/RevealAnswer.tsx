@@ -62,7 +62,7 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
     return validateAnswer ? (
       <h2>Correct!</h2>
     ) : (
-      <h2 style={{ color: "red" }}>Wrong!</h2>
+      <h2 className="wrong">Wrong!</h2>
     );
   };
 
@@ -70,8 +70,9 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
     <section>
       <div className="answer-container">
         {answerResult()}
-        <h3>"{correctAnswerTitle}" was the correct answer!</h3>
-        <p></p>
+        <h3>
+          <span>"{correctAnswerTitle}</span>" was the correct answer!
+        </h3>
         <p>{answerData.answer_desc}</p>
         <button className="answer_button" onClick={handleClickButton}>
           {quizState.counterValue === 10 ? "Results" : "Next Question"}

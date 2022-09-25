@@ -1,0 +1,21 @@
+.mask {
+  width: 20px;
+  height: 25px;
+  margin: 0 0.75rem;
+}
+
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d43636;
+  margin-top: 1rem;
+  margin-bottom: 0.85rem;
+  padding-right: 0.75rem;
+}
+
+.counter-wrapper p {
+  font-size: 1.55rem;
+  font-weight: bold;
+  margin: 0;
+}

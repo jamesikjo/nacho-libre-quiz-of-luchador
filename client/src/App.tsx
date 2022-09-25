@@ -10,23 +10,27 @@ import "./App.css";
 import { getData } from "./utils/fetchData";
 
 const App = () => {
-  const [questions, setQuestions] = useState<QuestionData[]>([]);
+  const [questions, setQuestions] = useState<QuestionData[] | null>(null);
   const { quizState } = useContext(QuizContext);
-
   const { counterValue, showResults } = quizState;
-  const totalQuestions: number = questions && questions.length;
 
   useEffect(() => {
     async function fetchQuestions() {
       try {
         const { data } = await getData("questions/get");
-        setQuestions(data); //res.json to read body of response
+        setQuestions(data);
       } catch (error) {
         console.log(error);
       }
     }
     fetchQuestions();
   }, []);
+
+  if (!questions) {
+    return null;
+  }
+
+  const totalQuestions: number = questions.length;
 
   return (
     <div className="App">

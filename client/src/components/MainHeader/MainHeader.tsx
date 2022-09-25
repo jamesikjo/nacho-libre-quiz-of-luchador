@@ -1,23 +1,22 @@
+import { useContext } from "react";
 import nachoHeader from "../../assets/images/nacho_header.png";
+import { resetQuiz } from "../../stores/Actions";
+import { QuizContext } from "../../stores/QuizState";
+import "./MainHeader.css";
 
 const MainHeader = () => {
+  const { dispatch } = useContext(QuizContext);
+
+  const handleClick = () => {
+    dispatch(resetQuiz());
+  };
+
   return (
     <header>
-      <nav>
-        <div
-          className="nav-links"
-          style={{ margin: "1.25rem 0rem", textAlign: "right" }}
-        >
-          <a href="/" style={{ paddingRight: "1.5rem" }}>
-            Start Over
-          </a>
-        </div>
+      <nav className="nav-main">
+        <button onClick={handleClick}>Start Over</button>
       </nav>
-      <img
-        src={nachoHeader}
-        alt="header logo"
-        style={{ width: 260, margin: "auto", display: "block" }}
-      />
+      <img className="logo" src={nachoHeader} alt="header logo" />
     </header>
   );
 };
