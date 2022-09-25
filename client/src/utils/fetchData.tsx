@@ -1,6 +1,5 @@
 export const getData = async (path: string, params: null | string = null) => {
   let url;
-  console.log(url);
   if (params !== null) {
     url = `${process.env.REACT_APP_PROD_URL}/${path}/${params}`;
   } else {
