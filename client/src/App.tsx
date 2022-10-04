@@ -49,7 +49,7 @@ const App = () => {
           {counterValue > 0 && counterValue <= totalQuestions && (
             <Question question={questions[counterValue - 1]} />
           )}
-          {showResults && <Results />}
+          {showResults && <Results totalQuestions={totalQuestions} />}
         </div>
       </main>
     </div>
