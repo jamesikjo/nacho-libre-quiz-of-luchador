@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { QuizContext } from "../../../stores/QuizState";
 import { AnswerData } from "../../../utils/types/AnswerData";
 import { QuestionData } from "../../../utils/types/QuestionData";
@@ -25,22 +25,26 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
   const { options, _id } = question;
 
   const correctAnswerTitle = options[answerData.correct_answer]?.option_title;
+
   const validateAnswer = userAnswer.answer_value === answerData?.correct_answer;
 
-  useEffect(() => {
-    //FETCH ANSWER DATA WITH QUESTION._ID
-    async function fetchAnswer() {
-      try {
-        const { data } = await getData("answer/get", _id);
-        setAnswerData(data[0]);
-      } catch (err) {
-        console.log(err);
-      }
+  const fetchAnswer = useCallback(async () => {
+    try {
+      const { data } = await getData("answer/get", _id);
+      setAnswerData(data[0]);
+    } catch (err) {
+      console.log(err);
     }
+  }, [_id]);
+
+  useEffect(() => {
+    fetchAnswer();
+  }, [fetchAnswer]);
+
+  useEffect(() => {
     if (validateAnswer) {
       dispatch(addScore());
     }
-    fetchAnswer();
   }, [_id, validateAnswer, dispatch]);
 
   const handleClickButton = () => {
