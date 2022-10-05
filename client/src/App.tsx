@@ -35,14 +35,7 @@ const App = () => {
   return (
     <div className="App">
       <MainHeader />
-      <main
-        className="main"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <main className="main">
         <div className="main-container">
           <Counter totalQuestions={totalQuestions} />
           {counterValue === 0 && <Start />}
