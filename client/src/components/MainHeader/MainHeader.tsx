@@ -16,7 +16,7 @@ const MainHeader = () => {
       <nav className="nav-main">
         <button onClick={handleClick}>Start Over</button>
       </nav>
-      <img className="logo" src={nachoHeader} alt="header logo" />
+      <img className="header-image" src={nachoHeader} alt="header logo" />
     </header>
   );
 };
