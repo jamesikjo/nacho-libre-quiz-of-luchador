@@ -4,7 +4,7 @@
 
 An interactive quiz web application for the movie Nacho Libre.
 
-[Demo](<https://[jamesjo.dev](https://quiz-of-luchador.jamesjo.dev/)>)
+[Demo](https://quiz-of-luchador.jamesjo.dev/)
 
 ## Project Overview
 
