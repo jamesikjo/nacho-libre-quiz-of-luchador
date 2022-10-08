@@ -24,9 +24,12 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
   const { quizState, dispatch } = useContext(QuizContext);
   const { options, _id } = question;
 
-  const correctAnswerTitle = options[answerData.correct_answer]?.option_title;
+  //set to boolean when answerData is populated
+  const validateAnswer = answerData?._id
+    ? userAnswer.answer_value === answerData.correct_answer
+    : null;
 
-  const validateAnswer = userAnswer.answer_value === answerData?.correct_answer;
+  const correctAnswerTitle = options[answerData.correct_answer]?.option_title;
 
   const fetchAnswer = useCallback(async () => {
     try {
@@ -54,6 +57,9 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
     dispatch(showAnswer());
     dispatch(addCounter());
   };
+
+  //return blank until answerData is populated and sets validateAnswer
+  if (validateAnswer === null) return null;
 
   return (
     <section>
