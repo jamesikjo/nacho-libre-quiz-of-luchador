@@ -1,18 +1,9 @@
 import React, { useContext, useState } from "react";
 import { showAnswer } from "../../stores/Actions";
 import { QuizContext } from "../../stores/QuizState";
-import { QuestionData } from "../../utils/types/QuestionData";
 import RevealAnswer from "./RevealAnswer";
+import { Props, UserAnswer } from "./question.types";
 import "./Question.css";
-
-type Props = {
-  question: QuestionData;
-};
-
-type UserAnswer = {
-  answer_value: number;
-  answer_title: string;
-};
 
 const Question = ({ question }: Props) => {
   const { quizState, dispatch } = useContext(QuizContext);
