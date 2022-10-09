@@ -59,7 +59,8 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
   };
 
   //return blank until answerData is populated and sets validateAnswer
-  if (validateAnswer === null) return null;
+  if (validateAnswer === null)
+    return <div className="answer-container">Loading...</div>;
 
   return (
     <section>
