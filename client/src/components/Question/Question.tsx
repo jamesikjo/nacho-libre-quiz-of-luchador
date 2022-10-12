@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { showAnswer } from "../../stores/Actions";
 import { QuizContext } from "../../stores/QuizState";
 import RevealAnswer from "./RevealAnswer";
-import { Props, UserAnswer } from "./question.types";
+import { Props, UserAnswer } from "./Question.types";
 import "./Question.css";
 
 const Question = ({ question }: Props) => {

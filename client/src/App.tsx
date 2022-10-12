@@ -4,8 +4,8 @@ import Start from "./components/Start";
 import Counter from "./components/Counter";
 import Question from "./components/Question";
 import { QuizContext } from "./stores/QuizState";
-import { QuestionData } from "./utils/types/QuestionData";
 import Results from "./components/Results";
+import { QuestionData } from "./utils/data.types";
 import "./App.css";
 import { getData } from "./utils/fetchData";
 
