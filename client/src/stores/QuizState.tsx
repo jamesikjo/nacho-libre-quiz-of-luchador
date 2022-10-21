@@ -4,7 +4,7 @@ import React, {
   ReactNode,
   ReactElement,
 } from "react";
-import { GlobalState, ContextType } from "../stores/types";
+import { GlobalState, ContextType } from "./stores.types";
 import quizReducer from "../stores/QuizReducer";
 
 // React Context-based Global Store with a reducer

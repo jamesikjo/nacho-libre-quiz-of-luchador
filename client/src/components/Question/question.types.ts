@@ -1,4 +1,4 @@
-import { QuestionData } from "../../utils/data.types";
+import { QuestionData } from "../../lib/data.types";
 
 export type Props = {
   question: QuestionData;

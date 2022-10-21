@@ -5,7 +5,7 @@ import Counter from "./components/Counter";
 import Question from "./components/Question";
 import { QuizContext } from "./stores/QuizState";
 import Results from "./components/Results";
-import { QuestionData } from "./utils/data.types";
+import { QuestionData } from "./lib/data.types";
 import "./App.css";
 import { getData } from "./utils/fetchData";
 

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import { QuizContext } from "../../../stores/QuizState";
-import { AnswerData } from "../../../utils/data.types";
+import { AnswerData } from "../../../lib/data.types";
 import {
   addCounter,
   addScore,
@@ -9,7 +9,7 @@ import {
 } from "../../../stores/Actions";
 import "./RevealAnswer.css";
 import { getData } from "../../../utils/fetchData";
-import { QuestionData } from "../../../utils/data.types";
+import { QuestionData } from "../../../lib/data.types";
 
 type Props = {
   question: QuestionData;

@@ -1,5 +1,5 @@
 import { ACTIONS } from "./Actions";
-import { GlobalState, ActionType } from "./types";
+import { GlobalState, ActionType } from "./stores.types";
 
 const quizReducer = (state: GlobalState, action: ActionType) => {
   switch (action.type) {
