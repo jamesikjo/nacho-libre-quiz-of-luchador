@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState, useCallback } from "react";
+import { useContext, useEffect } from "react";
 import { QuizContext } from "../../../stores/QuizState";
-import { AnswerData } from "../../../lib/data.types";
 import {
   addCounter,
   addScore,
@@ -8,8 +7,8 @@ import {
   showResults,
 } from "../../../stores/Actions";
 import "./RevealAnswer.css";
-import { getData } from "../../../utils/fetchData";
-import { QuestionData } from "../../../lib/data.types";
+import { QuestionData } from "../../../types/data.types";
+import useAnswers from "../../../utils/hooks/useAnswers";
 
 type Props = {
   question: QuestionData;
@@ -20,9 +19,9 @@ type Props = {
 };
 
 const RevealAnswer = ({ question, userAnswer }: Props) => {
-  const [answerData, setAnswerData] = useState<AnswerData>({} as AnswerData);
-  const { quizState, dispatch } = useContext(QuizContext);
   const { options, _id } = question;
+  const [answerData] = useAnswers(_id);
+  const { quizState, dispatch } = useContext(QuizContext);
 
   //set to boolean when answerData is populated
   const validateAnswer = answerData?._id
@@ -30,19 +29,6 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
     : null;
 
   const correctAnswerTitle = options[answerData.correct_answer]?.option_title;
-
-  const fetchAnswer = useCallback(async () => {
-    try {
-      const { data } = await getData("answer/get", _id);
-      setAnswerData(data[0]);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [_id]);
-
-  useEffect(() => {
-    fetchAnswer();
-  }, [fetchAnswer]);
 
   useEffect(() => {
     if (validateAnswer) {
@@ -58,7 +44,7 @@ const RevealAnswer = ({ question, userAnswer }: Props) => {
     dispatch(addCounter());
   };
 
-  //return blank until answerData is populated and sets validateAnswer
+  //show Loading... until answerData is populated and sets validateAnswer
   if (validateAnswer === null)
     return <div className="answer-container">Loading...</div>;
 

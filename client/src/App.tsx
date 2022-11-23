@@ -1,34 +1,19 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import MainHeader from "./components/MainHeader";
 import Start from "./components/Start";
 import Counter from "./components/Counter";
 import Question from "./components/Question";
 import { QuizContext } from "./stores/QuizState";
 import Results from "./components/Results";
-import { QuestionData } from "./lib/data.types";
+import useQuestions from "./utils/hooks/useQuestions";
 import "./App.css";
-import { getData } from "./utils/fetchData";
 
 const App = () => {
-  const [questions, setQuestions] = useState<QuestionData[] | null>(null);
+  const [questions] = useQuestions();
   const { quizState } = useContext(QuizContext);
   const { counterValue, showResults } = quizState;
 
-  useEffect(() => {
-    async function fetchQuestions() {
-      try {
-        const { data } = await getData("questions/get");
-        setQuestions(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchQuestions();
-  }, []);
-
-  if (!questions) {
-    return null;
-  }
+  if (!questions) return null;
 
   const totalQuestions: number = questions.length;
 
